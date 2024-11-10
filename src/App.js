@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import bolt11 from 'bolt11';
+import { decode } from 'light-bolt11-decoder';
 import './App.css';
 import { Buffer } from 'buffer';
 
@@ -22,8 +22,8 @@ function App() {
       }
 
       // Decode the BOLT11 invoice
-      const decodedInvoice = bolt11.decode(invoice);
-      const paymentHash = decodedInvoice.tags.find(tag => tag.tagName === 'payment_hash')?.data;
+      const decodedInvoice = decode(invoice);
+      const paymentHash = decodedInvoice.sections.find(section => section.name === 'payment_hash')?.value;
       
       if (!paymentHash) {
         throw new Error('Invalid invoice: payment hash not found');
