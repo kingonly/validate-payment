@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# ⚡ Lightning Payment Validator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple web application that validates Lightning Network payments by verifying payment preimages against their corresponding invoices.
 
-## Available Scripts
+## 🌐 Live Demo
 
-In the project directory, you can run:
+Visit the live application at: [https://validate-payment.vercel.app](https://validate-payment.vercel.app)
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Decode BOLT11 invoices
+- Validate payment preimages
+- Real-time validation feedback
+- Clean and simple user interface
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Technologies Used
 
-### `npm test`
+- React.js
+- light-bolt11-decoder
+- Web Crypto API
+- Vercel (deployment)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏃‍♂️ Running Locally
 
-### `npm run build`
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/validate-payment.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
+```bash
+cd validate-payment
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Start the development server:
+```bash
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📝 Documentation
 
-### `npm run eject`
+For more detailed information about the project, please refer to the [README.md](https://github.com/yourusername/validate-payment/blob/main/README.md) file in the repository.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🤝 Contributing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+We welcome contributions from the community! If you'd like to contribute to the project, please follow the steps below:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Commit your changes
+5. Push your changes to your fork
+6. Create a pull request
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📜 License
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/yourusername/validate-payment/blob/main/LICENSE) file for more information.
