@@ -1,43 +1,30 @@
 import React from 'react';
 import { useState, useEffect, useCallback } from 'react';
-import { decode as decodeBolt11 } from 'light-bolt11-decoder';
-import { decode as decodeBolt12 } from 'boltz-bolt12';
+import { decode } from 'light-bolt11-decoder';
 import './App.css';
 import { Buffer } from 'buffer';
 import { Helmet } from 'react-helmet';
 
-window.Buffer = Buffer;
+window.Buffer = Buffer; // This is important for bolt11 to work
 
 function App() {
   const [invoice, setInvoice] = useState('');
   const [preimage, setPreimage] = useState('');
   const [validationResult, setValidationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [invoiceType, setInvoiceType] = useState('bolt11');
 
   const validatePayment = useCallback(async () => {
     try {
       setIsLoading(true);
       
+      // Validate inputs
       if (!invoice.trim() || !preimage.trim()) {
         throw new Error('Please provide both invoice and preimage');
       }
 
-      // Detect and decode invoice based on format
-      let paymentHash;
-      if (invoice.startsWith('lnbc') || invoice.startsWith('lntb')) {
-        // BOLT11 invoice
-        const decodedInvoice = decodeBolt11(invoice);
-        paymentHash = decodedInvoice.sections.find(section => section.name === 'payment_hash')?.value;
-        setInvoiceType('bolt11');
-      } else if (invoice.startsWith('lno1')) {
-        // BOLT12 offer/invoice
-        const decodedInvoice = decodeBolt12(invoice);
-        paymentHash = decodedInvoice.paymentHash;
-        setInvoiceType('bolt12');
-      } else {
-        throw new Error('Unsupported invoice format');
-      }
+      // Decode the BOLT11 invoice
+      const decodedInvoice = decode(invoice);
+      const paymentHash = decodedInvoice.sections.find(section => section.name === 'payment_hash')?.value;
       
       if (!paymentHash) {
         throw new Error('Invalid invoice: payment hash not found');
@@ -105,7 +92,7 @@ function App() {
         <h1>⚡ Lightning Payment Validator</h1>
         <div className="form-container">
           <textarea
-            placeholder="Enter BOLT11 or BOLT12 Invoice"
+            placeholder="Enter BOLT11 Invoice"
             value={invoice}
             onChange={(e) => setInvoice(e.target.value.replace(/[\s\n]+/g, ''))}
             onKeyDown={handleKeyPress}
@@ -119,11 +106,6 @@ function App() {
             onKeyDown={handleKeyPress}
             className="input-field"
           />
-          {invoiceType && (
-            <div className="invoice-type">
-              Detected format: {invoiceType.toUpperCase()}
-            </div>
-          )}
           <button 
             onClick={validatePayment}
             disabled={isLoading}
