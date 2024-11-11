@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { decode } from 'light-bolt11-decoder';
 import './App.css';
 import { Buffer } from 'buffer';
@@ -13,7 +13,7 @@ function App() {
   const [validationResult, setValidationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const validatePayment = async () => {
+  const validatePayment = useCallback(async () => {
     try {
       setIsLoading(true);
       
@@ -54,7 +54,26 @@ function App() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [invoice, preimage]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    
+    const hasInvoice = params.has("invoice");
+    const hasPreimage = params.has("preimage");
+    
+    if (hasInvoice) {
+      setInvoice(params.get("invoice"));
+    }
+
+    if (hasPreimage) {
+      setPreimage(params.get("preimage"));
+    }
+
+    if (hasInvoice && hasPreimage) {
+      validatePayment();
+    }
+  }, [validatePayment]);
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
