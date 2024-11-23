@@ -8,15 +8,17 @@ Visit the live application at: [https://validate-payment.vercel.app](https://val
 
 ## 🚀 Features
 
-- Decode BOLT11 invoices
-- Validate payment preimages
+- Supports both BOLT11 and BOLT12 invoice formats
+- Automatic invoice format detection
 - Real-time validation feedback
 - Clean and simple user interface
+- URL parameter support for easy sharing
 
 ## 🛠️ Technologies Used
 
 - React.js
 - light-bolt11-decoder
+- bolt12-decoder
 - Web Crypto API
 - Vercel (deployment)
 
@@ -40,7 +42,15 @@ npm start
 
 ## 📝 Documentation
 
-For more detailed information about the project, please refer to the [README.md](https://github.com/yourusername/validate-payment/blob/main/README.md) file in the repository.
+### URL Parameters
+You can validate payments by passing parameters in the URL:
+```
+https://validate-payment.vercel.app/?invoice=<INVOICE>&preimage=<PREIMAGE>
+```
+
+Supports both BOLT11 and BOLT12 formats:
+- BOLT11 invoices (starting with `lnbc` or `lntb`)
+- BOLT12 invoices (starting with `lni`)
 
 ## 🤝 Contributing
 
