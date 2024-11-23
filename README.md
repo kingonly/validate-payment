@@ -4,7 +4,7 @@ A simple web application that validates Lightning Network payments by verifying 
 
 ## 🌐 Live Demo
 
-Visit the live application [here](https://validate-payment.netlify.app/)
+Visit the live application [here](https://validate-payment.com/)
 
 ## 🚀 Features
 
