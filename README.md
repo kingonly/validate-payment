@@ -4,7 +4,7 @@ A simple web application that validates Lightning Network payments by verifying 
 
 ## 🌐 Live Demo
 
-Visit the live application at: [https://validate-payment.vercel.app](https://validate-payment.vercel.app)
+Visit the live application [here](https://validate-payment.netlify.app/)
 
 ## 🚀 Features
 
@@ -12,15 +12,13 @@ Visit the live application at: [https://validate-payment.vercel.app](https://val
 - Automatic invoice format detection
 - Real-time validation feedback
 - Clean and simple user interface
-- URL parameter support for easy sharing
-
+- URL parameter support for external use
 ## 🛠️ Technologies Used
 
 - React.js
 - light-bolt11-decoder
 - bolt12-decoder
 - Web Crypto API
-- Vercel (deployment)
 
 ## 🏃‍♂️ Running Locally
 
@@ -45,7 +43,7 @@ npm start
 ### URL Parameters
 You can validate payments by passing parameters in the URL:
 ```
-https://validate-payment.vercel.app/?invoice=<INVOICE>&preimage=<PREIMAGE>
+https://validate-payment.netlify.app/?invoice=<INVOICE>&preimage=<PREIMAGE>
 ```
 
 Supports both BOLT11 and BOLT12 formats:
@@ -54,15 +52,8 @@ Supports both BOLT11 and BOLT12 formats:
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! If you'd like to contribute to the project, please follow the steps below:
-
-1. Fork the repository
-2. Create a new branch
-3. Make your changes
-4. Commit your changes
-5. Push your changes to your fork
-6. Create a pull request
+We welcome contributions from the community.
 
 ## 📜 License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/yourusername/validate-payment/blob/main/LICENSE) file for more information.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/kingonly/validate-payment/blob/main/LICENSE) file for more information.
