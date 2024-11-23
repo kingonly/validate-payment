@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect, useCallback } from 'react';
-import { decode } from 'light-bolt11-decoder';
+import { decode as decodeBolt11 } from 'light-bolt11-decoder';
+import BOLT12Decoder from 'bolt12-decoder';
 import './App.css';
 import { Buffer } from 'buffer';
 import { Helmet } from 'react-helmet';
@@ -12,22 +13,32 @@ function App() {
   const [preimage, setPreimage] = useState('');
   const [validationResult, setValidationResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [paymentType, setPaymentType] = useState('bolt11');
 
   const validatePayment = useCallback(async () => {
     try {
       setIsLoading(true);
       
-      // Validate inputs
       if (!invoice.trim() || !preimage.trim()) {
         throw new Error('Please provide both invoice and preimage');
       }
 
-      // Decode the BOLT11 invoice
-      const decodedInvoice = decode(invoice);
-      const paymentHash = decodedInvoice.sections.find(section => section.name === 'payment_hash')?.value;
+      let paymentHash;
+      const trimmedInvoice = invoice.trim();
       
+      // Auto-detect invoice type
+      if (trimmedInvoice.startsWith('lnbc') || trimmedInvoice.startsWith('lntb')) {
+        const decodedInvoice = decodeBolt11(invoice);
+        paymentHash = decodedInvoice.sections.find(section => section.name === 'payment_hash')?.value;
+      } else if (trimmedInvoice.startsWith('lni')) {
+        const decodedInvoice = BOLT12Decoder.decode(invoice);
+        paymentHash = decodedInvoice.paymentHash;  // Adjust based on actual BOLT12 structure
+      } else {
+        throw new Error('Invalid invoice format. Must start with "lnbc"/"lntb" (BOLT11) or "lni" (BOLT12)');
+      }
+
       if (!paymentHash) {
-        throw new Error('Invalid invoice: payment hash not found');
+        throw new Error(`Invalid ${paymentType.toUpperCase()}: payment hash not found`);
       }
 
       // Hash the preimage
@@ -54,7 +65,7 @@ function App() {
     } finally {
       setIsLoading(false);
     }
-  }, [invoice, preimage]);
+  }, [invoice, preimage, paymentType]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -92,7 +103,7 @@ function App() {
         <h1>⚡ Lightning Payment Validator</h1>
         <div className="form-container">
           <textarea
-            placeholder="Enter BOLT11 Invoice"
+            placeholder="Enter Lightning Invoice (BOLT11 or BOLT12)"
             value={invoice}
             onChange={(e) => setInvoice(e.target.value.replace(/[\s\n]+/g, ''))}
             onKeyDown={handleKeyPress}
