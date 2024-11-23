@@ -99,11 +99,14 @@ function App() {
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
       </Helmet>
       
-      <header className="App-header">
-        <h1>⚡ Lightning Payment Validator</h1>
+      <div className="App-header">
+        <h1>
+          <span className="logo">Lightning</span>
+          Payment Validator
+        </h1>
         <div className="form-container">
           <textarea
-            placeholder="Enter Lightning Invoice (BOLT11 or BOLT12)"
+            placeholder="Enter Lightning Invoice"
             value={invoice}
             onChange={(e) => setInvoice(e.target.value.replace(/[\s\n]+/g, ''))}
             onKeyDown={handleKeyPress}
@@ -111,7 +114,7 @@ function App() {
           />
           <input
             type="text"
-            placeholder="Enter Payment Preimage"
+            placeholder="Enter Lightning Invoice Preimage"
             value={preimage}
             onChange={(e) => setPreimage(e.target.value.replace(/[\s\n]+/g, ''))}
             onKeyDown={handleKeyPress}
@@ -130,7 +133,7 @@ function App() {
             </div>
           )}
         </div>
-      </header>
+      </div>
     </div>
   );
 }
