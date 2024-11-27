@@ -2,7 +2,7 @@
 
 A simple web application that validates Lightning Network payments by verifying payment preimages against their corresponding invoices.
 
-## 🌐 Live Demo
+## 🌐 Live App
 
 Visit the live application [here](https://validate-payment.com/)
 
@@ -18,7 +18,6 @@ Visit the live application [here](https://validate-payment.com/)
 - React.js
 - light-bolt11-decoder
 - bolt12-decoder
-- Web Crypto API
 
 ## 🏃‍♂️ Running Locally
 
