@@ -55,7 +55,7 @@ function App() {
       const isValid = hashHex === paymentHash;
       setValidationResult({
         success: isValid,
-        message: isValid ? 'Payment verified! ✓' : 'Invalid preimage ✗'
+        message: isValid ? 'Payment successful! ✓' : 'Invalid preimage ✗'
       });
     } catch (error) {
       setValidationResult({
@@ -132,7 +132,15 @@ function App() {
               {validationResult.message}
               {validationResult.success && (
                 <p className="explanation">
-                  The provided preimage confirms that the specified invoice has been successfully paid.
+                  The provided preimage cryptographically proves that the specified invoice has been successfully paid. Learn{' '}
+                <a
+                  href="https://faq.blink.sv/blink-and-other-wallets/how-to-prove-that-a-lightning-invoice-was-paid"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  more
+                </a>
+                  .
                 </p>
               )}
             </div>
