@@ -130,6 +130,11 @@ function App() {
           {validationResult && (
             <div className={`validation-result ${validationResult.success ? 'success' : 'error'}`}>
               {validationResult.message}
+              {validationResult.success && (
+                <p className="explanation">
+                  The provided preimage confirms that the specified invoice has been successfully paid.
+                </p>
+              )}
             </div>
           )}
         </div>

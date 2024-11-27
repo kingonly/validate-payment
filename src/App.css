@@ -105,16 +105,35 @@ textarea.input-field {
   padding: 1rem;
   border-radius: 8px;
   font-weight: 500;
+  position: relative;
 }
 
 .validation-result.success {
   background: #e6f4ea;
   color: #137333;
+  border: 1px solid #a5d6a7;
 }
 
 .validation-result.error {
   background: #fce8e6;
   color: #c5221f;
+  border: 1px solid #ef9a9a;
+}
+
+.explanation {
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border-left: 4px solid #0066ff;
+  background: #f0f8ff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+
+.explanation:hover {
+  background: #e6f7ff;
 }
 
 .App-link {
