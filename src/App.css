@@ -173,3 +173,33 @@ textarea.input-field::placeholder {
     font-size: 1.75rem;
   }
 }
+
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f8f9fa; /* Light background */
+  border-top: 1px solid #e0e0e0; /* Subtle top border */
+}
+
+.footer a {
+  color: #0066ff; /* GitHub link color */
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex; /* Align icon and text */
+  align-items: center; /* Center vertically */
+  font-size: 1rem; /* Font size */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.footer a:hover {
+  color: #004bb5; /* Darker blue on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
+.footer svg {
+  margin-right: 0.5rem; /* Space between icon and text */
+  width: 24px; /* Icon size */
+  height: 24px; /* Icon size */
+  fill: currentColor; /* Make the icon color match the text */
+}
