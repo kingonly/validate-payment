@@ -132,13 +132,13 @@ function App() {
               {validationResult.message}
               {validationResult.success && (
                 <p className="explanation">
-                  The provided preimage cryptographically proves that the specified invoice has been successfully paid. Learn{' '}
+                  The provided preimage cryptographically proves that the specified invoice has been successfully paid. Learn more {' '}
                 <a
                   href="https://faq.blink.sv/blink-and-other-wallets/how-to-prove-that-a-lightning-invoice-was-paid"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  more
+                  here
                 </a>
                   .
                 </p>
