@@ -4,7 +4,7 @@ A simple web application that validates Lightning Network payments by verifying 
 
 ## 🌐 Live App
 
-Visit the live application [here](https://validate-payment.com/)
+Check out the live application [here](https://validate-payment.com/).
 
 ## 🚀 Features
 
