@@ -105,14 +105,18 @@ function App() {
           Payment Validator
         </h1>
         <div className="form-container">
+          <label htmlFor="lightning-invoice" className="input-label">Lightning Invoice</label>
           <textarea
+            id="lightning-invoice"
             placeholder="Enter Lightning Invoice"
             value={invoice}
             onChange={(e) => setInvoice(e.target.value.replace(/[\s\n]+/g, ''))}
             onKeyDown={handleKeyPress}
             className="input-field"
           />
+          <label htmlFor="lightning-preimage" className="input-label">Lightning Invoice Preimage</label>
           <input
+            id="lightning-preimage"
             type="text"
             placeholder="Enter Lightning Invoice Preimage"
             value={preimage}
