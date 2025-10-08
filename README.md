@@ -32,10 +32,14 @@ cd validate-payment
 npm install
 ```
 
+> **Note:** This project includes an `.npmrc` file that automatically uses `--legacy-peer-deps` to resolve dependency conflicts between React Scripts 5.0.1 and newer TypeScript versions required by bolt12-decoder.
+
 3. Start the development server:
 ```bash
 npm start
 ```
+
+The app will open automatically in your browser at `http://localhost:3000`.
 
 ## 📝 Documentation
 
